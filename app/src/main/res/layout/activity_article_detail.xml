@@ -7,10 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <FrameLayout
+    <!-- for testing android:background="#ff00" -->
+    <com.example.xyzreader.ui.MaxWidthFrameLayout
         android:id="@+id/up_container"
         android:background="@android:color/transparent"
         android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:maxWidth="@dimen/detail_card_max_width"
         android:layout_height="?actionBarSize">
 
         <ImageButton
@@ -21,11 +24,6 @@
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="@string/up"
             android:src="@drawable/ic_arrow_back" />
+    </com.example.xyzreader.ui.MaxWidthFrameLayout>
 
-        <!-- this will help to make arrow button visible if the background white -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/photo_background_protection"/>
-    </FrameLayout>
 </FrameLayout>
