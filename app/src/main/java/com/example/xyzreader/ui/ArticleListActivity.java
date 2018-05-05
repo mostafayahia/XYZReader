@@ -103,6 +103,13 @@ public class ArticleListActivity extends ActionBarActivity implements
 
     private void updateRefreshingUI() {
         mSwipeRefreshLayout.setRefreshing(mIsRefreshing);
+        if (!mIsRefreshing) {
+            findViewById(R.id.article_list_progress_bar).setVisibility(View.INVISIBLE);
+            findViewById(R.id.article_list_layout).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.article_list_progress_bar).setVisibility(View.VISIBLE);
+            findViewById(R.id.article_list_layout).setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

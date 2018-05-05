@@ -11,6 +11,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -57,8 +59,14 @@ public class ItemsProvider extends ContentProvider {
     }
 
     @Override
+    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection,
+                      @Nullable String[] selectionArgs) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        Log.d(TAG, "uri: " + uri.toString());
+        Log.d(TAG, "uri: " + uri.toString() + " selection: " + selection + " selectionArgs: " + selectionArgs);
         final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
         final SelectionBuilder builder = buildSelection(uri);
         Cursor cursor = builder.where(selection, selectionArgs).query(db, projection, sortOrder);
@@ -68,8 +76,10 @@ public class ItemsProvider extends ContentProvider {
         return cursor;
     }
 
+
     @Override
     public Uri insert(Uri uri, ContentValues values) {
+        Log.d(TAG, "INSERT uri: " + uri);
         final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         final int match = sUriMatcher.match(uri);
         switch (match) {
@@ -83,14 +93,14 @@ public class ItemsProvider extends ContentProvider {
             }
         }
     }
-
-    @Override
-    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        final SelectionBuilder builder = buildSelection(uri);
-        getContext().getContentResolver().notifyChange(uri, null);
-        return builder.where(selection, selectionArgs).update(db, values);
-    }
+//
+//    @Override
+//    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+//        final SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+//        final SelectionBuilder builder = buildSelection(uri);
+//        getContext().getContentResolver().notifyChange(uri, null);
+//        return builder.where(selection, selectionArgs).update(db, values);
+//    }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {

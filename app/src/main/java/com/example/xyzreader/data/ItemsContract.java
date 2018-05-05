@@ -1,10 +1,13 @@
 package com.example.xyzreader.data;
 
 import android.net.Uri;
+import android.util.Log;
 
 public class ItemsContract {
 	public static final String CONTENT_AUTHORITY = "com.example.xyzreader";
 	public static final Uri BASE_URI = Uri.parse("content://com.example.xyzreader");
+
+	private static final String TAG = ItemsContract.class.getSimpleName();
 
 	interface ItemsColumns {
 		/** Type: INTEGER PRIMARY KEY AUTOINCREMENT */

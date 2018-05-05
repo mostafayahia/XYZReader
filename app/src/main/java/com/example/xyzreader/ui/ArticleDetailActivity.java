@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
+import android.widget.Toast;
 
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
@@ -26,6 +28,7 @@ import com.example.xyzreader.data.ItemsContract;
 public class ArticleDetailActivity extends ActionBarActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static final String TAG = ArticleDetailActivity.class.getSimpleName();
     private Cursor mCursor;
     private long mStartId;
 
@@ -49,6 +52,8 @@ public class ArticleDetailActivity extends ActionBarActivity
         setContentView(R.layout.activity_article_detail);
 
         getLoaderManager().initLoader(0, null, this);
+
+//        Toast.makeText(this, "detailActivity!!!!!", Toast.LENGTH_SHORT).show();
 
         mPagerAdapter = new MyPagerAdapter(getFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -109,11 +114,17 @@ public class ArticleDetailActivity extends ActionBarActivity
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+//        findViewById(R.id.article_detail_progress_bar).setVisibility(View.VISIBLE);
+//        findViewById(R.id.article_detail_layout).setVisibility(View.INVISIBLE);
         return ArticleLoader.newAllArticlesInstance(this);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+
+//        findViewById(R.id.article_detail_progress_bar).setVisibility(View.INVISIBLE);
+//        findViewById(R.id.article_detail_layout).setVisibility(View.VISIBLE);
+
         mCursor = cursor;
         mPagerAdapter.notifyDataSetChanged();
 

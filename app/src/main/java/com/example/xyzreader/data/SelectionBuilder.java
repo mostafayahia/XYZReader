@@ -119,17 +119,17 @@ public class SelectionBuilder {
     	}
     }
 
-    public SelectionBuilder mapToTable(String column, String table) {
-    	ensureProjectionMap();
-        mProjectionMap.put(column, table + "." + column);
-        return this;
-    }
-
-    public SelectionBuilder map(String fromColumn, String toClause) {
-    	ensureProjectionMap();
-        mProjectionMap.put(fromColumn, toClause + " AS " + fromColumn);
-        return this;
-    }
+//    public SelectionBuilder mapToTable(String column, String table) {
+//    	ensureProjectionMap();
+//        mProjectionMap.put(column, table + "." + column);
+//        return this;
+//    }
+//
+//    public SelectionBuilder map(String fromColumn, String toClause) {
+//    	ensureProjectionMap();
+//        mProjectionMap.put(fromColumn, toClause + " AS " + fromColumn);
+//        return this;
+//    }
 
     /**
      * Return selection string for current internal state.
@@ -191,13 +191,13 @@ public class SelectionBuilder {
                 orderBy, limit);
     }
 
-    /**
-     * Execute update using the current internal state as {@code WHERE} clause.
-     */
-    public int update(SQLiteDatabase db, ContentValues values) {
-        assertTable();
-        return db.update(mTable, values, getSelection(), getSelectionArgs());
-    }
+//    /**
+//     * Execute update using the current internal state as {@code WHERE} clause.
+//     */
+//    public int update(SQLiteDatabase db, ContentValues values) {
+//        assertTable();
+//        return db.update(mTable, values, getSelection(), getSelectionArgs());
+//    }
 
     /**
      * Execute delete using the current internal state as {@code WHERE} clause.

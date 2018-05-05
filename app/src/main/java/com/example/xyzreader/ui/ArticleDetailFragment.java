@@ -195,6 +195,7 @@ public class ArticleDetailFragment extends Fragment implements
     }
 
     private void bindViews() {
+
         if (mRootView == null) {
             return;
         }
@@ -261,11 +262,11 @@ public class ArticleDetailFragment extends Fragment implements
             bylineView.setText("N/A" );
             bodyView.setText("N/A");
         }
+
     }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        Log.d(TAG, "onCreateLoader() called");
         return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
     }
 
@@ -298,6 +299,7 @@ public class ArticleDetailFragment extends Fragment implements
         }
 
         bindViews();
+
     }
 
     @Override
