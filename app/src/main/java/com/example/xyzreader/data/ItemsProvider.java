@@ -66,7 +66,7 @@ public class ItemsProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        Log.d(TAG, "uri: " + uri.toString() + " selection: " + selection + " selectionArgs: " + selectionArgs);
+        Log.d(TAG, "QUERY uri: " + uri.toString() + " selection: " + selection + " selectionArgs: " + selectionArgs);
         final SQLiteDatabase db = mOpenHelper.getReadableDatabase();
         final SelectionBuilder builder = buildSelection(uri);
         Cursor cursor = builder.where(selection, selectionArgs).query(db, projection, sortOrder);

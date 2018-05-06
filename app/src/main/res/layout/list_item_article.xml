@@ -19,12 +19,12 @@
         <!--suppress AndroidLintContentDescription -->
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:background="@color/photo_placeholder" />
 
-        <!-- specifying minLines in the next textView to avoid in consistent length of text in the ui-->
+        <!-- specifying minLines in the next textView to avoid inconsistent length of text in the ui-->
         <TextView
             android:id="@+id/article_title"
             style="@style/TextAppearance.AppCompat.Subhead"

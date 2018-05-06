@@ -114,17 +114,11 @@ public class ArticleDetailActivity extends ActionBarActivity
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-//        findViewById(R.id.article_detail_progress_bar).setVisibility(View.VISIBLE);
-//        findViewById(R.id.article_detail_layout).setVisibility(View.INVISIBLE);
         return ArticleLoader.newAllArticlesInstance(this);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-
-//        findViewById(R.id.article_detail_progress_bar).setVisibility(View.INVISIBLE);
-//        findViewById(R.id.article_detail_layout).setVisibility(View.VISIBLE);
-
         mCursor = cursor;
         mPagerAdapter.notifyDataSetChanged();
 

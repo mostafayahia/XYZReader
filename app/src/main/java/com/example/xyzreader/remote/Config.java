@@ -12,6 +12,7 @@ public class Config {
     static {
         URL url = null;
         try {
+            // you can also try fetching this url: https://raw.githubusercontent.com/TNTest/xyzreader/master/data.json
             url = new URL("https://go.udacity.com/xyz-reader-json" );
         } catch (MalformedURLException ignored) {
             // TODO: throw a real error
